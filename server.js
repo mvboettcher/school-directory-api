@@ -10,6 +10,9 @@ dotenv.config({ path: './config/config.env' })
 // Connect to DB
 connectDB()
 
+// Route files
+const users = require('./routes/users')
+
 const app = express()
 
 app.use(express.json())
@@ -18,6 +21,9 @@ app.use(express.json())
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 }
+
+// Mount routers
+app.use('/api/users', users)
 
 const PORT = process.env.PORT || 5000
 
