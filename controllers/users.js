@@ -33,3 +33,25 @@ exports.createUser = async (req, res, next) => {
     })
   }
 }
+
+// @desc    Get single user
+// @route   GET /api/v1/users/:id
+exports.getUser = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.id)
+
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+      })
+    }
+    res.status(200).json({
+      success: true,
+      data: user,
+    })
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+    })
+  }
+}
