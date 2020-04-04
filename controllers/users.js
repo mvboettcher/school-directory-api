@@ -55,3 +55,21 @@ exports.getUser = async (req, res, next) => {
     })
   }
 }
+
+// @desc    Delete user
+// @route   DELETE /api/v1/users/:id
+exports.deleteUser = async (req, res, next) => {
+  try {
+    const user = await User.findByIdAndDelete(req.params.id)
+
+    if (!user) {
+      return res.status(400).json({ success: false })
+    }
+    res.status(200).json({
+      success: true,
+      data: {},
+    })
+  } catch (error) {
+    res.status(400).json({ success: false })
+  }
+}
