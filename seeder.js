@@ -3,10 +3,8 @@ const mongoose = require('mongoose')
 const colors = require('colors')
 const dotenv = require('dotenv')
 
-// Load env variables
 dotenv.config({ path: './config/config.env' })
 
-// Load models
 const User = require('./models/User')
 
 // Connect to db
@@ -33,7 +31,7 @@ const importData = async () => {
   }
 }
 
-// Delete data
+// Delete from db
 const deleteData = async () => {
   try {
     await User.deleteMany()
@@ -53,6 +51,3 @@ if (process.argv[2] === '-i') {
   console.log(`seeder flag '${process.argv[2]}' not recognized`.red)
   process.exit()
 }
-
-// $ node seeder -i (import)
-// $ node seeder -d (delete)
