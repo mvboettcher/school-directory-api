@@ -1,8 +1,6 @@
 # School Directory API
 
-## Available Scripts
-
-In the project directory, you can run:
+## Getting Started...
 
 ### `npm run dev`
 
