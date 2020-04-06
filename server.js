@@ -1,6 +1,7 @@
 const express = require('express')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
+const cors = require('cors')
 const colors = require('colors')
 
 const connectDB = require('./config/db')
@@ -21,6 +22,9 @@ app.use(express.json())
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 }
+
+// Enable CORS
+app.use(cors())
 
 // Mount routers
 app.use('/api/users', users)
